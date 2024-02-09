@@ -11,3 +11,9 @@ body {
 }
 
 
+:root {
+  --white: #FFF;
+  --primary: #2F80ED;
+  --secondary: #FFF059;
+  --gray-300: #ededed;
+}

@@ -1,8 +1,10 @@
+import MainTemplate from '@/presentation/container/MainTemplate'
+
 export const Home = () => {
   return (
-    <main>
+    <MainTemplate>
       <h1>Primeiro Commit</h1>
-    </main>
+    </MainTemplate>
   )
 }
 
