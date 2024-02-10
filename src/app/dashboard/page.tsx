@@ -8,6 +8,7 @@ import React from 'react'
 import FirtStep from './components/FirstStep/FirstStep'
 import SecondStep from './components/SecondStep/SecondStep'
 import ThirdStep from './components/ThirdStep/ThirdStep'
+import FourthStep from './components/FourthStep/FourthStep'
 
 const Dashboard = () => {
   const { activeStep } = React.useContext(StepContext)
@@ -17,6 +18,7 @@ const Dashboard = () => {
       0: FirtStep,
       1: SecondStep,
       2: ThirdStep,
+      3: FourthStep,
     }
 
     return steps[activeStep] ? steps[activeStep]() : null
