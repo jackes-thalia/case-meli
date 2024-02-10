@@ -3,7 +3,7 @@ import breakpoints from '../../constansts/breakpoints'
 
 export const StyledCard = styled.div`
   width: 546px;
-  padding: 94px 92px;
+  padding: 94px 0;
   border-radius: 6px;
   background-color: var(--white);
   height: fit-content;
@@ -25,6 +25,8 @@ export const StyledCard = styled.div`
   }
 
   @media (min-width: ${breakpoints.small}) {
+    padding: 94px 92px;
+
     & > .container {
       justify-content: center;
       max-width: 736px;

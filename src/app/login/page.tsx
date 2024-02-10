@@ -1,11 +1,12 @@
 'use client'
+
 import React from 'react'
 import MainTemplate from '@/presentation/container/MainTemplate'
 import Card from '@/presentation/components/Card/Card'
 import { Button, TextField } from '@mui/material'
 import { redirect } from 'next/navigation'
 
-export const Home = () => {
+const Home = () => {
   const [step, setStep] = React.useState<number>(1)
   const emailSection = () => {
     return (
