@@ -9,6 +9,7 @@ export const StyledHeader = styled.div`
   left: 0;
   position: fixed;
   padding: 16px;
+  z-index: 100;
 
   & > .container {
     margin: 0 auto;

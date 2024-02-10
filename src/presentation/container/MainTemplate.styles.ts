@@ -3,9 +3,10 @@ import breakpoints from '../constansts/breakpoints'
 
 export const StyledMainTemplate = styled.div`
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   background: var(--white);
   padding-top: 66px;
+  padding-bottom: 40px;
 
   & > .container {
     justify-content: center;
