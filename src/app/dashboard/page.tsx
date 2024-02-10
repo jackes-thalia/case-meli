@@ -4,65 +4,18 @@ import Card from '@/presentation/components/Card/Card'
 import StepComponent from '@/presentation/components/Stepper/Stepper'
 import MainTemplate from '@/presentation/container/MainTemplate'
 import { StepContext } from '@/presentation/providers/StepProvider'
-import { Button, TextField } from '@mui/material'
 import React from 'react'
+import FirtStep from './components/FirstStep/FirstStep'
+import SecondStep from './components/FirstStep/LocationModal/LocationModal'
 
 const Dashboard = () => {
-  const { activeStep, nextStep } = React.useContext(StepContext)
-
-  const firtStep = () => {
-    return (
-      <Card>
-        <h2>Solicitar ocorrência</h2>
-        <p>Forneça detalhes da sua ocorrência</p>
-        <label>Digite o CEP do centro de distribuição:</label>
-        <TextField
-          id="input-email"
-          name="email"
-          type="email"
-          variant="outlined"
-        />
-        <Button
-          sx={{ mt: 5 }}
-          size="large"
-          variant="contained"
-          onClick={nextStep}
-        >
-          Continuar
-        </Button>
-      </Card>
-    )
-  }
-
-  const secondStep = () => {
-    return (
-      <Card>
-        <h2>O step pegou caralho</h2>
-        <p>Forneça detalhes da sua ocorrência</p>
-        <label>Digite o CEP do centro de distribuição:</label>
-        <TextField
-          id="input-email"
-          name="email"
-          type="email"
-          variant="outlined"
-        />
-        <Button
-          sx={{ mt: 5 }}
-          size="large"
-          variant="contained"
-          onClick={nextStep}
-        >
-          Continuar
-        </Button>
-      </Card>
-    )
-  }
+  const { activeStep } = React.useContext(StepContext)
 
   const renderStep = () => {
     const steps: { [key: number]: () => React.JSX.Element } = {
-      0: firtStep,
-      1: secondStep,
-      2: firtStep,
+      0: FirtStep,
+      1: SecondStep,
+      2: FirtStep,
     }
 
     return steps[activeStep] ? steps[activeStep]() : null
@@ -70,7 +23,7 @@ const Dashboard = () => {
 
   return (
     <MainTemplate>
-      <Card>
+      <Card size="large">
         <StepComponent />
         {renderStep()}
       </Card>
