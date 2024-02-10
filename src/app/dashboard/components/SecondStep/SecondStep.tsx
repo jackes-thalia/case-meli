@@ -3,6 +3,7 @@
 import React from 'react'
 import { Button, TextField } from '@mui/material'
 import { StyledSecondStep } from './SecondStep.styles'
+import LocationInfo from '../LocationInfo/LocationInfo'
 
 const SecondStep = () => {
   const occurrenceData = [
@@ -15,6 +16,7 @@ const SecondStep = () => {
 
   return (
     <StyledSecondStep>
+      <LocationInfo />
       <h2>Dados da ocorrência</h2>
 
       <section className="occurrence-data">
