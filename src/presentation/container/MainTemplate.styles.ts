@@ -8,9 +8,11 @@ export const StyledMainTemplate = styled.div`
   padding-top: 66px;
 
   & > .container {
+    justify-content: center;
     padding: 16px;
     margin: 0 auto;
     width: 100%;
+    display: flex;
   }
 
   @media (min-width: ${breakpoints.small}) {
@@ -18,7 +20,7 @@ export const StyledMainTemplate = styled.div`
     background-image: linear-gradient(
       to bottom,
       var(--secondary) 330px,
-      var(--white) 330px
+      var(--gray-300) 330px
     );
 
     & > .container {
