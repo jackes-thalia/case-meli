@@ -1,8 +1,12 @@
 import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
 import './globals.css'
+import MaterialThemeProvider from '@/presentation/providers/MaterialThemeProvider'
 
-const inter = Montserrat({ subsets: ['latin'], weight: ['400', '600', '300'] })
+export const montserratFont = Montserrat({
+  subsets: ['latin'],
+  weight: ['400', '600', '300'],
+})
 
 export const metadata: Metadata = {
   title: 'Case Meli',
@@ -16,8 +20,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body suppressHydrationWarning={true} className={inter.className}>
-        {children}
+      <body
+        suppressHydrationWarning={true}
+        className={montserratFont.className}
+      >
+        <MaterialThemeProvider font={montserratFont}>
+          {children}
+        </MaterialThemeProvider>
       </body>
     </html>
   )
