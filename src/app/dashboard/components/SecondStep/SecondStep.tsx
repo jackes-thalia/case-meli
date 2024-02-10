@@ -4,8 +4,11 @@ import React from 'react'
 import { Button, TextField } from '@mui/material'
 import { StyledSecondStep } from './SecondStep.styles'
 import LocationInfo from '../LocationInfo/LocationInfo'
+import { StepContext } from '@/presentation/providers/StepProvider'
 
 const SecondStep = () => {
+  const { nextStep } = React.useContext(StepContext)
+
   const occurrenceData = [
     { name: 'title', label: 'Título:', type: 'text' },
     { name: 'name', label: 'Nome do relator', type: 'text' },
@@ -38,7 +41,12 @@ const SecondStep = () => {
           </div>
         ))}
       </section>
-      <Button variant="contained" size="large" sx={{ mt: 6 }}>
+      <Button
+        variant="contained"
+        size="large"
+        sx={{ mt: 6 }}
+        onClick={nextStep}
+      >
         Avançar
       </Button>
     </StyledSecondStep>

@@ -7,6 +7,7 @@ import { StepContext } from '@/presentation/providers/StepProvider'
 import React from 'react'
 import FirtStep from './components/FirstStep/FirstStep'
 import SecondStep from './components/SecondStep/SecondStep'
+import ThirdStep from './components/ThirdStep/ThirdStep'
 
 const Dashboard = () => {
   const { activeStep } = React.useContext(StepContext)
@@ -15,7 +16,7 @@ const Dashboard = () => {
     const steps: { [key: number]: () => React.JSX.Element } = {
       0: FirtStep,
       1: SecondStep,
-      2: FirtStep,
+      2: ThirdStep,
     }
 
     return steps[activeStep] ? steps[activeStep]() : null
