@@ -5,6 +5,7 @@ export const StyledMainTemplate = styled.div`
   width: 100%;
   height: 100vh;
   background: var(--white);
+  padding-top: 66px;
 
   & > .container {
     padding: 16px;
