@@ -3,7 +3,7 @@
 import React from 'react'
 import { StyledLocationModal } from './LocationModal.styles'
 import Inventory2OutlinedIcon from '@mui/icons-material/Inventory2Outlined'
-import { Divider, Typography } from '@mui/material'
+import { Button, Divider, Typography } from '@mui/material'
 import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined'
 import { StepContext } from '@/presentation/providers/StepProvider'
 
@@ -12,7 +12,7 @@ type LocationModalProps = {
 }
 
 const LocationModal = ({ back }: LocationModalProps) => {
-  const { hideStepper, showStepper } = React.useContext(StepContext)
+  const { hideStepper, showStepper, nextStep } = React.useContext(StepContext)
 
   React.useEffect(() => {
     hideStepper()
@@ -58,6 +58,14 @@ const LocationModal = ({ back }: LocationModalProps) => {
           </section>
         </div>
       </section>
+      <Button
+        variant="contained"
+        size="large"
+        sx={{ mt: 6 }}
+        onClick={nextStep}
+      >
+        Continuar
+      </Button>
     </StyledLocationModal>
   )
 }

@@ -6,7 +6,7 @@ import MainTemplate from '@/presentation/container/MainTemplate'
 import { StepContext } from '@/presentation/providers/StepProvider'
 import React from 'react'
 import FirtStep from './components/FirstStep/FirstStep'
-import SecondStep from './components/FirstStep/LocationModal/LocationModal'
+import SecondStep from './components/SecondStep/SecondStep'
 
 const Dashboard = () => {
   const { activeStep } = React.useContext(StepContext)
