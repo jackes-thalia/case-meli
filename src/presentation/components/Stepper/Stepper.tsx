@@ -1,9 +1,10 @@
 import { StepContext } from '@/presentation/providers/StepProvider'
 import { Stepper, Step, StepLabel } from '@mui/material'
 import React, { useContext } from 'react'
+import { StyledStepper } from './Stepper.styles'
 
 const StepComponent = () => {
-  const { activeStep } = useContext(StepContext)
+  const { activeStep, showStep } = useContext(StepContext)
 
   const steps = [
     { label: 'Buscar' },
@@ -13,7 +14,7 @@ const StepComponent = () => {
   ]
 
   return (
-    <div>
+    <StyledStepper showStep={showStep}>
       <Stepper activeStep={activeStep} alternativeLabel>
         {steps.map((nameStep) => {
           return (
@@ -23,7 +24,7 @@ const StepComponent = () => {
           )
         })}
       </Stepper>
-    </div>
+    </StyledStepper>
   )
 }
 
