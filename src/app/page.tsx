@@ -1,11 +1,19 @@
-import MainTemplate from '@/presentation/container/MainTemplate'
+'use client'
+import getSessionUser from '@/utils/getSessionUser'
+import { redirect } from 'next/navigation'
+import React from 'react'
 
 export const Home = () => {
-  return (
-    <MainTemplate>
-      <h1>Primeiro Commit</h1>
-    </MainTemplate>
-  )
+  React.useEffect(() => {
+    const user = getSessionUser()
+    if (user) {
+      redirect('/dashboard')
+    } else {
+      redirect('/login')
+    }
+  }, [])
+
+  return <div></div>
 }
 
 export default Home
