@@ -1,30 +1,44 @@
 'use client'
 
 import React from 'react'
-import { Input } from '@mui/material'
+import { Button, TextField } from '@mui/material'
 import { StyledSecondStep } from './SecondStep.styles'
 
 const SecondStep = () => {
   const occurrenceData = [
-    { label: 'CEP:' },
-    { label: 'Endereço' },
-    { label: 'Cidade' },
-    { label: 'Estado:' },
-    { label: 'Numero:' },
+    { name: 'title', label: 'Título:', type: 'text' },
+    { name: 'name', label: 'Nome do relator', type: 'text' },
+    { name: 'occurrence-date', label: 'Data da ocorrência', type: 'date' },
+    { name: 'closing-date', label: 'Data de encerramento:', type: 'date' },
+    { name: 'description', label: 'Descrição:', type: 'text' },
   ]
 
   return (
     <StyledSecondStep>
       <h2>Dados da ocorrência</h2>
 
-      <section className="cep-data">
+      <section className="occurrence-data">
         {occurrenceData.map((item, index) => (
-          <div key={index}>
+          <div
+            key={index}
+            className={item.name === 'description' ? 'description' : ''}
+          >
             <div className="label">{item.label}</div>
-            <Input />
+            <TextField
+              id={`input-${item.name}`}
+              name={`${item.name}`}
+              type={`${item.type}`}
+              variant="outlined"
+              size="medium"
+              fullWidth
+              sx={{ mt: 3 }}
+            />
           </div>
         ))}
       </section>
+      <Button variant="contained" size="large" sx={{ mt: 6 }}>
+        Avançar
+      </Button>
     </StyledSecondStep>
   )
 }
