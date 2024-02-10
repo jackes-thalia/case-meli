@@ -8,6 +8,7 @@ import { redirect } from 'next/navigation'
 
 const Home = () => {
   const [step, setStep] = React.useState<number>(1)
+
   const emailSection = () => {
     return (
       <Card>

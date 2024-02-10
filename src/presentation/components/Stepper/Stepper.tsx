@@ -14,7 +14,7 @@ const StepComponent = () => {
   ]
 
   return (
-    <StyledStepper showStep={showStep}>
+    <StyledStepper $showStep={showStep}>
       <Stepper activeStep={activeStep} alternativeLabel>
         {steps.map((nameStep) => {
           return (
