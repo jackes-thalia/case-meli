@@ -1,8 +1,17 @@
 import styled from 'styled-components'
 import breakpoints from '../../constansts/breakpoints'
 
-export const StyledCard = styled.div`
-  width: 546px;
+type StyledCardProps = {
+  size: 'small' | 'large'
+}
+
+export const StyledCard = styled.div<StyledCardProps>`
+  width: ${({ size }) =>
+    ({
+      small: '546px',
+      large: '860px',
+    })[size] || 'auto'};
+
   padding: 94px 0;
   border-radius: 6px;
   background-color: var(--white);
