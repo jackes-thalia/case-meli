@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
 import './globals.css'
 import MaterialThemeProvider from '@/presentation/providers/MaterialThemeProvider'
+import { StepProvider } from '@/presentation/providers/StepProvider'
 
 export const montserratFont = Montserrat({
   subsets: ['latin'],
@@ -25,7 +26,7 @@ export default function RootLayout({
         className={montserratFont.className}
       >
         <MaterialThemeProvider font={montserratFont}>
-          {children}
+          <StepProvider>{children}</StepProvider>
         </MaterialThemeProvider>
       </body>
     </html>
