@@ -8,9 +8,11 @@ import { DashboardContext } from '@/presentation/providers/DashboardProvider'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { firstStepValidationSchema } from '../validation/StepsValidation'
+import issueService, { IGetByCepProps } from '@/service/issueService'
 
 const FirtStep = () => {
   const [openedLocationModal, setOpenedLocationModal] = React.useState(false)
+
   const { addIssueDataFields } = React.useContext(DashboardContext)
 
   const {
@@ -18,14 +20,26 @@ const FirtStep = () => {
     handleSubmit,
     formState: { errors, isValid },
     trigger,
+    setError,
     getValues,
   } = useForm({
     resolver: yupResolver(firstStepValidationSchema),
   })
 
-  const openLocationModal = () => {
+  const openLocationModal = (data: IGetByCepProps) => {
+    if (data.erro) {
+      setError('cep', {
+        message: 'Centro de distribuição não encontrado',
+      })
+      return
+    }
     addIssueDataFields({
       cep: String(getValues().cep) || '',
+      address: data?.logradouro,
+      city: data?.localidade,
+      comments: data?.complemento,
+      state: data?.uf,
+      neighborhood: data?.bairro,
     })
     setOpenedLocationModal(true)
   }
@@ -34,8 +48,15 @@ const FirtStep = () => {
     setOpenedLocationModal(false)
   }
 
-  const onSubmit = () => {
-    openLocationModal()
+  const onSubmit = async () => {
+    const cep = String(getValues().cep)
+
+    try {
+      const data = await issueService.getByCep(cep)
+      openLocationModal(data)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (

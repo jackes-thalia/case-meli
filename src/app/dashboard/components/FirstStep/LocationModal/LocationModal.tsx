@@ -6,6 +6,7 @@ import Inventory2OutlinedIcon from '@mui/icons-material/Inventory2Outlined'
 import { Button, Divider, Typography } from '@mui/material'
 import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined'
 import { StepContext } from '@/presentation/providers/StepProvider'
+import { DashboardContext } from '@/presentation/providers/DashboardProvider'
 
 type LocationModalProps = {
   back: () => void
@@ -13,6 +14,7 @@ type LocationModalProps = {
 
 const LocationModal = ({ back }: LocationModalProps) => {
   const { hideStepper, showStepper, nextStep } = React.useContext(StepContext)
+  const { issueData } = React.useContext(DashboardContext)
 
   React.useEffect(() => {
     hideStepper()
@@ -22,13 +24,15 @@ const LocationModal = ({ back }: LocationModalProps) => {
     }
   }, [hideStepper, showStepper])
 
+  const { cep, address, city, state, neighborhood, complement } = issueData
+
   const cepData = [
-    { class: 'col-4', label: 'CEP:', value: '06445132' },
-    { class: 'col-4', label: 'Endereço:', value: 'Av Barueri silva rocha' },
-    { class: 'col-2', label: 'Cidade:', value: 'Barueri' },
-    { class: 'col-2', label: 'Estado:', value: 'São Paulo' },
-    { class: 'col-2', label: 'Numero:', value: '02' },
-    { class: 'col-2', label: 'Complemento:', value: 'Perto da ponte' },
+    { class: 'col-4', label: 'CEP:', value: cep },
+    { class: 'col-4', label: 'Endereço:', value: address },
+    { class: 'col-2', label: 'Cidade:', value: city },
+    { class: 'col-2', label: 'Estado:', value: state },
+    { class: 'col-2', label: 'Bairro:', value: neighborhood },
+    { class: 'col-2', label: 'Complemento:', value: complement },
   ]
 
   return (
@@ -52,7 +56,9 @@ const LocationModal = ({ back }: LocationModalProps) => {
             {cepData.map((item, index) => (
               <div key={index} className={item.class}>
                 <div className="label">{item.label}</div>
-                <div className="value">{item.value}</div>
+                <div className="value">
+                  {item.value === '' ? '-' : item.value}
+                </div>
               </div>
             ))}
           </section>

@@ -7,7 +7,10 @@ export type IssueData = {
   cep: string
   address: string
   city: string
+  state: string
+  neighborhood: string
   title: string
+  complement: string
   startDate: string
   endDate?: string
   files: File[]
@@ -30,6 +33,9 @@ const defaultIssueData: IssueData = {
   cep: '',
   address: '',
   city: '',
+  state: '',
+  complement: '',
+  neighborhood: '',
   title: '',
   startDate: '',
   files: [],
