@@ -3,10 +3,12 @@
 import React from 'react'
 import { Button } from '@mui/material'
 import { StyledFifthStep } from './FifthStep.styles'
-import { redirect } from 'next/navigation'
 import { StepContext } from '@/presentation/providers/StepProvider'
+import { useRouter } from 'next/navigation'
 
 const FifthStep = () => {
+  const router = useRouter()
+
   const { resetStepper, hideStepper, showStepper } =
     React.useContext(StepContext)
 
@@ -18,7 +20,7 @@ const FifthStep = () => {
   }, [hideStepper, showStepper])
 
   const redirectToSolicitations = () => {
-    redirect('/solicitations')
+    router.push('/issues')
   }
   const newSolicitation = () => {
     resetStepper()

@@ -1,17 +1,19 @@
 'use client'
 import getSessionUser from '@/utils/getSessionUser'
-import { redirect } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import React from 'react'
 
 export const Home = () => {
+  const router = useRouter()
+
   React.useEffect(() => {
     const user = getSessionUser()
     if (user) {
-      redirect('/dashboard')
+      router.push('/dashboard')
     } else {
-      redirect('/login')
+      router.push('/login')
     }
-  }, [])
+  }, [router])
 
   return <div></div>
 }
