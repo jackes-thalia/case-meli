@@ -27,7 +27,7 @@ export const StyledLocationModal = styled.div`
 
     .info-title {
       display: flex;
-      gap: 18px;
+      margin-top: 8px;
     }
 
     .cep-data {

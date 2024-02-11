@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Button, TextField } from '@mui/material'
+import { Button, TextField, Typography } from '@mui/material'
 import { StyledFirstStep } from './FirstStep.styles'
 import LocationModal from './LocationModal/LocationModal'
 import { DashboardContext } from '@/presentation/providers/DashboardProvider'
@@ -64,11 +64,19 @@ const FirtStep = () => {
       {openedLocationModal && <LocationModal back={closeLocationModal} />}
       {!openedLocationModal && (
         <StyledFirstStep onSubmit={handleSubmit(onSubmit)}>
-          <h2>Solicitar ocorrência</h2>
-          <p>Forneça detalhes da sua ocorrência</p>
-          <label data-error={!!errors.cep}>
+          <Typography variant="h2" component="h2">
+            Solicitar ocorrência
+          </Typography>
+          <Typography variant="caption">
+            Forneça detalhes da sua ocorrência
+          </Typography>
+          <Typography
+            variant="caption"
+            data-error={!!errors.cep}
+            sx={{ mb: 2, mt: 6 }}
+          >
             Digite o CEP do centro de distribuição:
-          </label>
+          </Typography>
           <TextField
             {...register('cep')}
             id="input-cep"

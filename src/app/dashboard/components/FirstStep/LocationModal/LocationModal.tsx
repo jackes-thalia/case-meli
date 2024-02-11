@@ -45,8 +45,10 @@ const LocationModal = ({ back }: LocationModalProps) => {
         <div>
           <section className="info-title">
             <div>
-              <Typography>Unidade:</Typography>
-              <Typography>Centro de distribuição Barueri</Typography>
+              <Typography variant="subtitle1">Unidade:</Typography>
+              <Typography variant="subtitle2">
+                Centro de distribuição Barueri
+              </Typography>
             </div>
           </section>
 
@@ -55,10 +57,12 @@ const LocationModal = ({ back }: LocationModalProps) => {
           <section className="cep-data">
             {cepData.map((item, index) => (
               <div key={index} className={item.class}>
-                <div className="label">{item.label}</div>
-                <div className="value">
+                <Typography variant="body1" className="label">
+                  {item.label}
+                </Typography>
+                <Typography variant="body2" className="value">
                   {item.value === '' ? '-' : item.value}
-                </div>
+                </Typography>
               </div>
             ))}
           </section>
