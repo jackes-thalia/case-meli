@@ -6,12 +6,7 @@ type StyledCardProps = {
 }
 
 export const StyledCard = styled.div<StyledCardProps>`
-  width: ${({ size }) =>
-    ({
-      small: '546px',
-      large: '860px',
-    })[size] || 'auto'};
-
+  width: 100%;
   padding: 94px 0;
   border-radius: 6px;
   background-color: var(--white);
@@ -35,6 +30,11 @@ export const StyledCard = styled.div<StyledCardProps>`
 
   @media (min-width: ${breakpoints.small}) {
     padding: 94px 92px;
+    width: ${({ size }) =>
+      ({
+        small: '546px',
+        large: '860px',
+      })[size] || 'auto'};
 
     & > .container {
       justify-content: center;
