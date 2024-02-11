@@ -23,12 +23,12 @@ const LocationModal = ({ back }: LocationModalProps) => {
   }, [hideStepper, showStepper])
 
   const cepData = [
-    { label: 'CEP:', value: '06445132' },
-    { label: 'Endereço:', value: 'Av Barueri silva rocha' },
-    { label: 'Cidade:', value: 'Barueri' },
-    { label: 'Estado:', value: 'São Paulo' },
-    { label: 'Numero:', value: '02' },
-    { label: 'Complemento:', value: 'Perto da ponte' },
+    { class: 'col-4', label: 'CEP:', value: '06445132' },
+    { class: 'col-4', label: 'Endereço:', value: 'Av Barueri silva rocha' },
+    { class: 'col-2', label: 'Cidade:', value: 'Barueri' },
+    { class: 'col-2', label: 'Estado:', value: 'São Paulo' },
+    { class: 'col-2', label: 'Numero:', value: '02' },
+    { class: 'col-2', label: 'Complemento:', value: 'Perto da ponte' },
   ]
 
   return (
@@ -50,7 +50,7 @@ const LocationModal = ({ back }: LocationModalProps) => {
 
           <section className="cep-data">
             {cepData.map((item, index) => (
-              <div key={index}>
+              <div key={index} className={item.class}>
                 <div className="label">{item.label}</div>
                 <div className="value">{item.value}</div>
               </div>
@@ -62,6 +62,7 @@ const LocationModal = ({ back }: LocationModalProps) => {
         variant="contained"
         size="large"
         sx={{ mt: 6 }}
+        fullWidth
         onClick={nextStep}
       >
         Continuar
