@@ -6,7 +6,7 @@ import { StepProvider } from '@/presentation/providers/StepProvider'
 
 export const montserratFont = Montserrat({
   subsets: ['latin'],
-  weight: ['400', '600', '300'],
+  weight: ['400', '600', '300', '500'],
 })
 
 export const metadata: Metadata = {

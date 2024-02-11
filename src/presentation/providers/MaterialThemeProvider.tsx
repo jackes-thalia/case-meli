@@ -4,6 +4,7 @@
 import { ThemeOptions } from '@mui/material'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import { NextFont } from 'next/dist/compiled/@next/font'
+import breakpoints from '../constansts/breakpoints'
 
 const MaterialThemeProvider = ({
   children,
@@ -29,7 +30,44 @@ const MaterialThemeProvider = ({
       fontFamily: font.style.fontFamily,
       button: {
         textTransform: 'none',
+        fontSize: '100px',
         fontWeight: 600,
+      },
+      h2: {
+        fontWeight: 500,
+        fontSize: '20px',
+        lineHeight: '26px',
+
+        [`@media (min-width: ${breakpoints.small})`]: {
+          fontWeight: 600,
+          fontSize: '24px',
+          lineHeight: '26px',
+        },
+      },
+      h4: {
+        fontWeight: 500,
+        fontSize: '20px',
+        lineHeight: '26px',
+      },
+      subtitle1: {
+        fontWeight: 500,
+        fontSize: '18px',
+        lineHeight: '20px',
+      },
+      subtitle2: {
+        fontWeight: 600,
+        fontSize: '18px',
+        lineHeight: '20px',
+      },
+      body1: {
+        fontWeight: 600,
+        fontSize: '14px',
+        lineHeight: '20px',
+      },
+      body2: {
+        fontWeight: 400,
+        fontSize: '14px',
+        lineHeight: '20px',
       },
     },
     spacing: [0, 4, 8, 12, 16, 20, 24, 48, 64, 72, 84],
