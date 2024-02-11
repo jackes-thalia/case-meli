@@ -1,21 +1,27 @@
 'use client'
 
-import React from 'react'
+import React, { useRef } from 'react'
 import { Button, IconButton, TextField, Typography } from '@mui/material'
 import { StyledThirdStep } from './ThirdStep.styles'
 import LocationInfo from '../LocationInfo/LocationInfo'
 import CloseIcon from '@mui/icons-material/Close'
 import { StepContext } from '@/presentation/providers/StepProvider'
+import { DashboardContext } from '@/presentation/providers/DashboardProvider'
 
 const ThirdStep = () => {
   const [filesToUpload, setFilesToUpload] = React.useState<File[]>([])
+  const { addIssueDataFields } = React.useContext(DashboardContext)
   const { nextStep } = React.useContext(StepContext)
+  const commentsRef = useRef(null)
+
+  const validTypes = ['image/png', 'image/jpeg', 'application/pdf']
 
   const addFiles = (files: File[]) => {
     setFilesToUpload((currentFiles) => {
       return [...currentFiles, ...files]
     })
   }
+
   const onFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = event.target
     if (!files) {
@@ -26,16 +32,22 @@ const ThirdStep = () => {
       alert('Você só pode enviar no máximo 3 arquivos')
       return
     }
-    console.log(files)
+    let errorMessage = ''
     let valid = true
     Array.from(files).forEach((file) => {
       if (file.size > 30 * 1000 * 1000) {
         valid = false
+        errorMessage = 'O arquivo não pode ser maior que 30mb'
+      }
+      if (!validTypes.includes(file.type)) {
+        valid = false
+        errorMessage = 'O arquivo não possui o formato permitido'
       }
     })
+
     if (!valid) {
       event.target.value = ''
-      alert('O arquivo não pode ser maior que 30mb')
+      alert(errorMessage)
       return
     }
     addFiles(Array.from(files))
@@ -45,6 +57,15 @@ const ThirdStep = () => {
       return currentFiles.filter((_, key) => key !== keyToRemove)
     })
   }
+
+  const onSubmit = () => {
+    addIssueDataFields({
+      files: filesToUpload,
+      comments: commentsRef.current ? commentsRef.current : '',
+    })
+    nextStep()
+  }
+
   return (
     <StyledThirdStep>
       <LocationInfo />
@@ -91,6 +112,7 @@ const ThirdStep = () => {
         <section>
           <Typography>Observações</Typography>
           <TextField
+            ref={commentsRef}
             name="comments"
             placeholder="Digite uma observação"
             type="text"
@@ -106,10 +128,11 @@ const ThirdStep = () => {
       </div>
 
       <Button
+        disabled={filesToUpload.length === 0}
         variant="contained"
         size="large"
         sx={{ mt: 6 }}
-        onClick={nextStep}
+        onClick={onSubmit}
       >
         Avançar
       </Button>
