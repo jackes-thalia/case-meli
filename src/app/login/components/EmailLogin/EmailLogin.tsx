@@ -1,6 +1,6 @@
 import { emailValidationSchema } from '@/app/login/components/validation/LoginValidation'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { Button, TextField } from '@mui/material'
+import { Button, TextField, Typography } from '@mui/material'
 import { useForm } from 'react-hook-form'
 import { StyledEmailLogin } from './EmailLogin.styles'
 
@@ -24,14 +24,22 @@ const EmailLogin = ({ nextStep }: EmailLoginProps) => {
 
   return (
     <StyledEmailLogin onSubmit={handleSubmit(onSubmit)}>
-      <h2>Olá! Informe seu e-mail Meli para solicitar uma ocorrência</h2>
-      <label data-error={!!errors.email}>Digite o email:</label>
+      <Typography variant="h2" component="h2">
+        Olá! Informe seu e-mail Meli para solicitar uma ocorrência
+      </Typography>
+      <Typography
+        data-error={!!errors.email}
+        component="label"
+        variant="caption"
+      >
+        Digite o email:
+      </Typography>
       <TextField
         {...register('email')}
         id="input-email"
         type="email"
         variant="outlined"
-        placeholder="Digite aqui o seu e-mail"
+        placeholder="Digite o seu e-mail aqui"
         helperText={errors.email?.message}
         error={!!errors.email}
         onBlur={() => trigger('email')}

@@ -1,4 +1,4 @@
-import { Button, TextField } from '@mui/material'
+import { Button, TextField, Typography } from '@mui/material'
 import { StyledTokenLogin } from './TokenLogin.styles'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { tokenValidationSchema } from '../validation/LoginValidation'
@@ -24,8 +24,12 @@ const TokenLogin = ({ nextStep }: TokenProps) => {
 
   return (
     <StyledTokenLogin onSubmit={handleSubmit(onSubmit)}>
-      <h2>Agora, Informe o token que enviamos para o seu e-mail</h2>
-      <label data-error={!!errors.token}>Digite o token:</label>
+      <Typography variant="h2" component="h2">
+        Agora, Informe o token que enviamos para o seu e-mail
+      </Typography>
+      <Typography variant="caption" data-error={!!errors.token}>
+        Digite o token:
+      </Typography>
       <TextField
         {...register('token')}
         id="input-token"
