@@ -9,11 +9,13 @@ const LocationInfo = () => {
         <Inventory2OutlinedIcon color="primary" />
       </section>
       <section>
-        <Typography>Centro de distribuição Barueri</Typography>
-        <Typography>CEP: 06445132</Typography>
+        <Typography variant="body1">Centro de distribuição Barueri</Typography>
+        <Typography variant="body2">CEP: 06445132</Typography>
       </section>
       <section>
-        <Typography color="primary">Editar</Typography>
+        <Typography variant="body1" color="primary">
+          Editar
+        </Typography>
       </section>
     </StyledLocationInfo>
   )
