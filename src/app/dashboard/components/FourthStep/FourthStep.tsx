@@ -3,8 +3,10 @@
 import React from 'react'
 import { Button, Divider, Typography } from '@mui/material'
 import { StyledFourthStep } from './FourthStep.styles'
+import { StepContext } from '@/presentation/providers/StepProvider'
 
 const FourthStep = () => {
+  const { nextStep, hideStepper } = React.useContext(StepContext)
   const distributionCenterData = [
     { label: 'Nome:', value: 'Centro de distribuição' },
     { label: 'CEP:', value: '064451658' },
@@ -45,6 +47,12 @@ const FourthStep = () => {
       return 'description'
     }
     return ''
+  }
+
+  const createSolicitation = () => {
+    // TODO: send to service
+    hideStepper()
+    nextStep()
   }
 
   return (
@@ -95,8 +103,13 @@ const FourthStep = () => {
         </div>
       </section>
 
-      <Button variant="contained" size="large" sx={{ mt: 6 }}>
-        Avançar
+      <Button
+        variant="contained"
+        size="large"
+        sx={{ mt: 6 }}
+        onClick={createSolicitation}
+      >
+        Enviar ocorrência
       </Button>
     </StyledFourthStep>
   )

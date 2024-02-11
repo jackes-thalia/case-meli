@@ -21,14 +21,18 @@ const MaterialThemeProvider = ({
       secondary: {
         main: '#FFF059',
       },
+      info: {
+        main: '#4F4F4F',
+      },
     },
     typography: {
       fontFamily: font.style.fontFamily,
       button: {
         textTransform: 'none',
+        fontWeight: 600,
       },
     },
-    spacing: [0, 4, 8, 12, 16, 20, 24],
+    spacing: [0, 4, 8, 12, 16, 20, 24, 48, 64, 72, 84],
     components: {
       MuiButton: {
         styleOverrides: {

@@ -9,6 +9,7 @@ type StepContextData = {
   previousStep: () => void
   hideStepper: () => void
   showStepper: () => void
+  resetStepper: () => void
 }
 
 export const StepContext = React.createContext<StepContextData>(
@@ -35,6 +36,10 @@ export const StepProvider = ({ children }: { children: React.ReactNode }) => {
     setShowStep(true)
   }
 
+  const resetStepper = () => {
+    setActiveStep(0)
+  }
+
   const value = {
     activeStep,
     showStep,
@@ -42,6 +47,7 @@ export const StepProvider = ({ children }: { children: React.ReactNode }) => {
     previousStep,
     hideStepper,
     showStepper,
+    resetStepper,
   }
 
   return <StepContext.Provider value={value}>{children}</StepContext.Provider>
