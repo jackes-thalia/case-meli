@@ -10,6 +10,7 @@ import SecondStep from './components/SecondStep/SecondStep'
 import ThirdStep from './components/ThirdStep/ThirdStep'
 import FourthStep from './components/FourthStep/FourthStep'
 import FifthStep from './components/FifthStep/FifthStep'
+import { DashboardProvider } from '@/presentation/providers/DashboardProvider'
 
 const Dashboard = () => {
   const { activeStep } = React.useContext(StepContext)
@@ -28,10 +29,12 @@ const Dashboard = () => {
 
   return (
     <MainTemplate>
-      <Card size="large">
-        <StepComponent />
-        {renderStep()}
-      </Card>
+      <DashboardProvider>
+        <Card size="large">
+          <StepComponent />
+          {renderStep()}
+        </Card>
+      </DashboardProvider>
     </MainTemplate>
   )
 }
