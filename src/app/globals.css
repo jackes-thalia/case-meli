@@ -18,3 +18,7 @@ body {
   --gray-300: #ededed;
   --error: #d32f2f;
 }
+
+label[data-error='true'] {
+  color: var(--error);
+}
