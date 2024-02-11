@@ -5,17 +5,27 @@ import { Button, TextField } from '@mui/material'
 import { StyledFirstStep } from './FirstStep.styles'
 import LocationModal from './LocationModal/LocationModal'
 import { DashboardContext } from '@/presentation/providers/DashboardProvider'
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { firstStepValidationSchema } from '../validation/StepsValidation'
 
 const FirtStep = () => {
   const [openedLocationModal, setOpenedLocationModal] = React.useState(false)
   const { addIssueDataFields } = React.useContext(DashboardContext)
 
-  const openLocationModal = (ev: React.FormEvent<HTMLFormElement>) => {
-    ev.preventDefault()
-    const formData = new FormData(ev.target as HTMLFormElement)
-    const formProps = Object.fromEntries(formData)
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+    trigger,
+    getValues,
+  } = useForm({
+    resolver: yupResolver(firstStepValidationSchema),
+  })
+
+  const openLocationModal = () => {
     addIssueDataFields({
-      cep: String(formProps?.cep) || '',
+      cep: String(getValues().cep) || '',
     })
     setOpenedLocationModal(true)
   }
@@ -24,16 +34,36 @@ const FirtStep = () => {
     setOpenedLocationModal(false)
   }
 
+  const onSubmit = () => {
+    openLocationModal()
+  }
+
   return (
     <>
       {openedLocationModal && <LocationModal back={closeLocationModal} />}
       {!openedLocationModal && (
-        <StyledFirstStep onSubmit={(ev) => openLocationModal(ev)}>
+        <StyledFirstStep onSubmit={handleSubmit(onSubmit)}>
           <h2>Solicitar ocorrência</h2>
           <p>Forneça detalhes da sua ocorrência</p>
-          <label>Digite o CEP do centro de distribuição:</label>
-          <TextField id="input-cep" name="cep" type="text" variant="outlined" />
-          <Button sx={{ mt: 5 }} size="large" variant="contained" type="submit">
+          <label data-error={!!errors.cep}>
+            Digite o CEP do centro de distribuição:
+          </label>
+          <TextField
+            {...register('cep')}
+            id="input-cep"
+            type="text"
+            variant="outlined"
+            error={!!errors.cep}
+            helperText={errors.cep?.message}
+            onBlur={() => trigger('cep')}
+          />
+          <Button
+            sx={{ mt: 5 }}
+            disabled={!isValid}
+            size="large"
+            variant="contained"
+            type="submit"
+          >
             Buscar
           </Button>
         </StyledFirstStep>

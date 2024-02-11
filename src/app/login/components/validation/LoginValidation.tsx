@@ -9,5 +9,5 @@ export const emailValidationSchema = Yup.object({
 export const tokenValidationSchema = Yup.object({
   token: Yup.string()
     .matches(/^\d{6}$/, 'O campo deve ter 6 dígitos')
-    .required('O e-mail é obrigatório'),
+    .required('O token é obrigatório'),
 }).required()
