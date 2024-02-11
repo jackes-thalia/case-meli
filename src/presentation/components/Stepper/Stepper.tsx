@@ -1,10 +1,11 @@
 import { StepContext } from '@/presentation/providers/StepProvider'
-import { Stepper, Step, StepLabel } from '@mui/material'
+import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined'
+import { Stepper, Step, StepLabel, IconButton } from '@mui/material'
 import React, { useContext } from 'react'
 import { StyledStepper } from './Stepper.styles'
 
 const StepComponent = () => {
-  const { activeStep, showStep } = useContext(StepContext)
+  const { activeStep, showStep, previousStep } = useContext(StepContext)
 
   const steps = [
     { label: 'Buscar' },
@@ -13,8 +14,24 @@ const StepComponent = () => {
     { label: 'Resumo' },
   ]
 
+  const backBtn = () => {
+    if (activeStep === 0) {
+      return null
+    }
+    return (
+      <IconButton
+        aria-label="voltar"
+        onClick={previousStep}
+        className="back-btn"
+      >
+        <ArrowBackIosNewOutlinedIcon color="action" />
+      </IconButton>
+    )
+  }
+
   return (
     <StyledStepper $showStep={showStep}>
+      {backBtn()}
       <Stepper activeStep={activeStep} alternativeLabel>
         {steps.map((nameStep) => {
           return (
