@@ -9,9 +9,10 @@ export type IssueData = {
   city: string
   title: string
   startDate: string
-  endDate: string
+  endDate?: string
   files: File[]
   comments: string
+  description: string
 }
 
 export type DashboardProviderData = {
@@ -31,9 +32,9 @@ const defaultIssueData: IssueData = {
   city: '',
   title: '',
   startDate: '',
-  endDate: '',
   files: [],
   comments: '',
+  description: '',
 }
 
 export const DashboardProvider = ({
