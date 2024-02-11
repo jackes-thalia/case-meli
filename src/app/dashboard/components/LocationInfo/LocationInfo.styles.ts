@@ -4,7 +4,7 @@ import styled from 'styled-components'
 export const StyledLocationInfo = styled.div`
   width: 100%;
   height: auto;
-  padding: 16px 36px;
+  padding: 16px 24px;
   display: grid;
   grid-template-columns: 40px 1fr 50px;
   margin-bottom: 34px;
