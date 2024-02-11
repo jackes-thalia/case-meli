@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Button, TextField } from '@mui/material'
+import { Button, TextField, Typography } from '@mui/material'
 import { StyledSecondStep } from './SecondStep.styles'
 import LocationInfo from '../LocationInfo/LocationInfo'
 import { StepContext } from '@/presentation/providers/StepProvider'
@@ -31,11 +31,11 @@ const SecondStep = () => {
   })
 
   const occurrenceData: OccurrenceType[] = [
-    { name: 'title', label: 'Título:', type: 'text' },
-    { name: 'name', label: 'Nome do relator', type: 'text' },
-    { name: 'startDate', label: 'Data da ocorrência', type: 'date' },
+    { name: 'title', label: 'Título:*', type: 'text' },
+    { name: 'name', label: 'Nome do relator:*', type: 'text' },
+    { name: 'startDate', label: 'Data da ocorrência:*', type: 'date' },
     { name: 'endDate', label: 'Data de encerramento:', type: 'date' },
-    { name: 'description', label: 'Descrição:', type: 'text' },
+    { name: 'description', label: 'Descrição:*', type: 'text' },
   ]
 
   const onSubmit = () => {
@@ -49,7 +49,7 @@ const SecondStep = () => {
   return (
     <StyledSecondStep onSubmit={handleSubmit(onSubmit)}>
       <LocationInfo />
-      <h2>Dados da ocorrência</h2>
+      <Typography variant="subtitle2">Dados da ocorrência</Typography>
 
       <section className="occurrence-data">
         {occurrenceData.map((item, index) => (
@@ -57,7 +57,9 @@ const SecondStep = () => {
             key={index}
             className={item.name === 'description' ? 'description' : ''}
           >
-            <div className="label">{item.label}</div>
+            <Typography variant="caption" className="label">
+              {item.label}
+            </Typography>
             <TextField
               {...register(item.name)}
               id={`input-${item.name}`}

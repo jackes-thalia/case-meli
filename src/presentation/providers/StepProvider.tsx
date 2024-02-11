@@ -17,7 +17,7 @@ export const StepContext = React.createContext<StepContextData>(
 )
 
 export const StepProvider = ({ children }: { children: React.ReactNode }) => {
-  const [activeStep, setActiveStep] = React.useState(0)
+  const [activeStep, setActiveStep] = React.useState(2)
   const [showStep, setShowStep] = React.useState(true)
 
   const nextStep = () => {

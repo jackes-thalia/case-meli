@@ -21,6 +21,7 @@ export const StyledThirdStep = styled.form`
     border: 1px solid rgba(0, 0, 0, 0.2);
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.12);
     border-radius: 8px;
+    margin-top: 18px;
 
     & > li {
       display: flex;

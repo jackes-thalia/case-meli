@@ -24,7 +24,7 @@ const EmailLogin = ({ nextStep }: EmailLoginProps) => {
 
   return (
     <StyledEmailLogin onSubmit={handleSubmit(onSubmit)}>
-      <Typography variant="h2" component="h2">
+      <Typography variant="h2" component="h2" sx={{ mb: 7 }}>
         Olá! Informe seu e-mail Meli para solicitar uma ocorrência
       </Typography>
       <Typography

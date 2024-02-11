@@ -60,7 +60,7 @@ const LocationModal = ({ back }: LocationModalProps) => {
                 <Typography variant="body1" className="label">
                   {item.label}
                 </Typography>
-                <Typography variant="body2" className="value">
+                <Typography variant="caption" className="value">
                   {item.value === '' ? '-' : item.value}
                 </Typography>
               </div>

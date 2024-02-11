@@ -30,7 +30,7 @@ const MaterialThemeProvider = ({
       fontFamily: font.style.fontFamily,
       button: {
         textTransform: 'none',
-        fontSize: '100px',
+        fontSize: '14px',
         fontWeight: 600,
       },
       h2: {
@@ -59,18 +59,18 @@ const MaterialThemeProvider = ({
         fontSize: '18px',
         lineHeight: '20px',
       },
+      caption: {
+        fontWeight: 400,
+        fontSize: '14px',
+        lineHeight: '20px',
+      },
       body1: {
         fontWeight: 600,
         fontSize: '14px',
         lineHeight: '20px',
       },
-      body2: {
-        fontWeight: 400,
-        fontSize: '14px',
-        lineHeight: '20px',
-      },
     },
-    spacing: [0, 4, 8, 12, 16, 20, 24, 48, 64, 72, 84],
+    spacing: [0, 4, 8, 12, 16, 20, 24, 28, 48, 64, 72, 84],
     components: {
       MuiButton: {
         styleOverrides: {

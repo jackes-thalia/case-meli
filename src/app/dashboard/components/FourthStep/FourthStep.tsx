@@ -57,23 +57,25 @@ const FourthStep = () => {
 
   return (
     <StyledFourthStep>
-      <h2>Resumo</h2>
-      <Typography>
+      <Typography variant="h2">Resumo da solicitação</Typography>
+      <Typography variant="caption">
         Revise suas informações para encaminhar a ocorrência
       </Typography>
 
       <section className="distribution-center">
         <div className="resume-title">
-          <Typography>Centro de distribuição</Typography>
-          <Typography color="primary">Editar</Typography>
+          <Typography variant="body1">Centro de distribuição</Typography>
+          <Typography variant="body1" color="primary">
+            Editar
+          </Typography>
         </div>
 
         <div className="distribution-content">
           {distributionCenterData.map((item, index) => {
             return (
               <div key={index}>
-                <Typography>{item.label}</Typography>
-                <Typography>{item.value}</Typography>
+                <Typography variant="body1">{item.label}</Typography>
+                <Typography variant="caption">{item.value}</Typography>
               </div>
             )
           })}
@@ -84,8 +86,10 @@ const FourthStep = () => {
 
       <section className="occurrence-data">
         <div className="resume-title">
-          <Typography>Dados da ocorrência</Typography>
-          <Typography color="primary">Editar</Typography>
+          <Typography variant="body1">Dados da ocorrência</Typography>
+          <Typography variant="body1" color="primary">
+            Editar
+          </Typography>
         </div>
 
         <div className="occurrence-content">
@@ -95,8 +99,8 @@ const FourthStep = () => {
                 key={index}
                 className={occurrenceContentClassName(item.name || '')}
               >
-                <Typography>{item.label}</Typography>
-                <Typography>{item.value}</Typography>
+                <Typography variant="body1">{item.label}</Typography>
+                <Typography variant="caption">{item.value}</Typography>
               </div>
             )
           })}

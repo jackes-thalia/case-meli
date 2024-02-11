@@ -69,15 +69,17 @@ const ThirdStep = () => {
   return (
     <StyledThirdStep>
       <LocationInfo />
-      <h2>Dados da ocorrência</h2>
+      <Typography variant="subtitle2" sx={{ mb: 4 }}>
+        Dados da ocorrência
+      </Typography>
 
       <div className="upload-content">
         <section>
-          <Typography>Upload de evidências</Typography>
-          <Typography>
+          <Typography variant="body1">Upload de evidências</Typography>
+          <Typography variant="caption">
             Anexe arquivos que facilitem a análise da ocorrência
           </Typography>
-          <Button variant="contained" component="label">
+          <Button variant="contained" component="label" sx={{ mt: 4 }}>
             Adicionar arquivo
             <input
               onChange={onFileUpload}
@@ -91,7 +93,9 @@ const ThirdStep = () => {
             <ul className="files-list">
               {filesToUpload.map((file, key) => (
                 <li key={file.name}>
-                  <span title={file.name}>{file.name}</span>
+                  <Typography variant="caption" title={file.name}>
+                    {file.name}
+                  </Typography>
                   <IconButton
                     sx={{
                       px: 0,
@@ -110,7 +114,7 @@ const ThirdStep = () => {
         </section>
 
         <section>
-          <Typography>Observações</Typography>
+          <Typography variant="caption">Observações</Typography>
           <TextField
             ref={commentsRef}
             name="comments"

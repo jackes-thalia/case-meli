@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Button } from '@mui/material'
+import { Button, Typography } from '@mui/material'
 import { StyledFifthStep } from './FifthStep.styles'
 import { StepContext } from '@/presentation/providers/StepProvider'
 import { useRouter } from 'next/navigation'
@@ -28,7 +28,9 @@ const FifthStep = () => {
   return (
     <>
       <StyledFifthStep>
-        <h2>Sua ocorrência foi enviada com sucesso!</h2>
+        <Typography variant="h2">
+          Sua ocorrência foi enviada com sucesso!
+        </Typography>
         <Button
           sx={{ mt: 10 }}
           size="large"
