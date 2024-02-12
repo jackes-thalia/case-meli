@@ -20,7 +20,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
+      <head>
+        <link rel="icon" type="image/x-icon" href="/images/favicon.svg" />
+      </head>
       <body
         suppressHydrationWarning={true}
         className={montserratFont.className}
