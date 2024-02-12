@@ -78,9 +78,14 @@ const ThirdStep = () => {
           <Typography variant="body1">Upload de evidências</Typography>
           <Typography variant="caption" component="p">
             Anexe arquivos <strong>(.jpg, .png ou .pdf)</strong> que facilitem a
-            análise da ocorrência
+            análise da ocorrência.
           </Typography>
-          <Button variant="contained" component="label" sx={{ mt: 4 }}>
+          <Button
+            variant="contained"
+            component="label"
+            sx={{ mt: 4 }}
+            disabled={filesToUpload.length > 2}
+          >
             Adicionar arquivo
             <input
               onChange={onFileUpload}

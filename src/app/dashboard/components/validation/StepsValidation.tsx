@@ -7,8 +7,12 @@ export const firstStepValidationSchema = Yup.object({
 }).required()
 
 export const secondStepValidationSchema = Yup.object({
-  title: Yup.string().required('O título é obrigatório'),
-  name: Yup.string().required('O nome do relator é obrigatório'),
+  title: Yup.string()
+    .required('O título é obrigatório')
+    .max(60, (vl) => `Limite de ${vl.max} caracteres`),
+  name: Yup.string()
+    .required('O nome do relator é obrigatório')
+    .max(26, (vl) => `Limite de ${vl.max} caracteres`),
   startDate: Yup.string().required('A data da ocorrência é obrigatório'),
   endDate: Yup.string(),
   description: Yup.string()

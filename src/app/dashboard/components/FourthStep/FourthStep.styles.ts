@@ -27,6 +27,8 @@ export const StyledFourthStep = styled.div`
     display: grid;
     gap: 20px 10px;
     grid-template-columns: repeat(2, 1fr);
+    max-width: calc(100vw - 32px);
+    word-break: break-word;
 
     .description {
       grid-column: span 2;

@@ -28,6 +28,7 @@ const EmailLogin = ({ nextStep }: EmailLoginProps) => {
         Olá! Informe seu e-mail Meli para solicitar uma ocorrência
       </Typography>
       <Typography
+        sx={{ mb: 2, mt: 6 }}
         data-error={!!errors.email}
         component="label"
         variant="caption"

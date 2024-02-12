@@ -27,7 +27,11 @@ const TokenLogin = ({ nextStep }: TokenProps) => {
       <Typography variant="h2" component="h2" sx={{ mb: 7 }}>
         Agora, Informe o token que enviamos para o seu e-mail
       </Typography>
-      <Typography variant="caption" data-error={!!errors.token}>
+      <Typography
+        variant="caption"
+        data-error={!!errors.token}
+        sx={{ mb: 2, mt: 6 }}
+      >
         Digite o token:
       </Typography>
       <TextField

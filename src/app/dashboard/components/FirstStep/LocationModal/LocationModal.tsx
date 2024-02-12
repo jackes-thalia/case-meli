@@ -40,6 +40,9 @@ const LocationModal = ({ back }: LocationModalProps) => {
       <header>
         <ArrowBackIosNewOutlinedIcon color="action" onClick={back} />
       </header>
+      <Typography variant="h4" sx={{ mb: 6 }}>
+        Centro de distribuição encontrado:
+      </Typography>
       <section>
         <Inventory2OutlinedIcon />
         <div>
