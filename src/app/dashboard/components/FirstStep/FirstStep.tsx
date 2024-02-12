@@ -9,6 +9,7 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { firstStepValidationSchema } from '../validation/StepsValidation'
 import issueService, { IGetByCepProps } from '@/service/issueService'
+import textMaskCustom from '@/utils/textMaskCustom'
 
 const FirtStep = () => {
   const [openedLocationModal, setOpenedLocationModal] = React.useState(false)
@@ -49,7 +50,7 @@ const FirtStep = () => {
   }
 
   const onSubmit = async () => {
-    const cep = String(getValues().cep)
+    const cep = String(getValues().cep).replace('-', '')
 
     try {
       const data = await issueService.getByCep(cep)
@@ -85,7 +86,11 @@ const FirtStep = () => {
             error={!!errors.cep}
             helperText={errors.cep?.message}
             onBlur={() => trigger('cep')}
-          />
+            InputProps={{
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              inputComponent: textMaskCustom('00000-000') as any,
+            }}
+          ></TextField>
           <Button
             sx={{ mt: 5 }}
             disabled={!isValid}
