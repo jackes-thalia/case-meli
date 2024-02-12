@@ -27,7 +27,6 @@ export const StyledFourthStep = styled.div`
     display: grid;
     gap: 20px 10px;
     grid-template-columns: repeat(2, 1fr);
-    // gap: 20px;
 
     .description {
       grid-column: span 2;
