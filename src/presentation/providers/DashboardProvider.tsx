@@ -59,7 +59,7 @@ export const DashboardProvider = ({
     })
   }
 
-  const value = {
+  const value: DashboardProviderData = {
     issueData,
     setIssueData,
     addIssueDataFields,

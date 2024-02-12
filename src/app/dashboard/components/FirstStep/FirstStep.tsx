@@ -64,7 +64,10 @@ const FirtStep = () => {
     <>
       {openedLocationModal && <LocationModal back={closeLocationModal} />}
       {!openedLocationModal && (
-        <StyledFirstStep onSubmit={handleSubmit(onSubmit)}>
+        <StyledFirstStep
+          data-testid="first-step-form"
+          onSubmit={handleSubmit(onSubmit)}
+        >
           <Typography variant="h2" component="h2">
             Solicitar ocorrência
           </Typography>
@@ -80,12 +83,14 @@ const FirtStep = () => {
           </Typography>
           <TextField
             {...register('cep')}
-            id="input-cep"
             type="text"
             variant="outlined"
             error={!!errors.cep}
             helperText={errors.cep?.message}
             onBlur={() => trigger('cep')}
+            inputProps={{
+              'data-testid': 'input-cep',
+            }}
             InputProps={{
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
               inputComponent: textMaskCustom('00000-000') as any,
@@ -97,6 +102,7 @@ const FirtStep = () => {
             size="large"
             variant="contained"
             type="submit"
+            name="Buscar"
           >
             Buscar
           </Button>
