@@ -4,37 +4,53 @@ import React from 'react'
 import { Button, Divider, Typography } from '@mui/material'
 import { StyledFourthStep } from './FourthStep.styles'
 import { StepContext } from '@/presentation/providers/StepProvider'
+import { DashboardContext } from '@/presentation/providers/DashboardProvider'
+import issueService from '@/service/issueService'
 
 const FourthStep = () => {
   const { nextStep, hideStepper } = React.useContext(StepContext)
+  const { issueData } = React.useContext(DashboardContext)
+  const {
+    cep,
+    address,
+    city,
+    state,
+    name,
+    title,
+    startDate,
+    endDate,
+    files,
+    description,
+    comments,
+  } = issueData
+
   const distributionCenterData = [
-    { label: 'Nome:', value: 'Centro de distribuição' },
-    { label: 'CEP:', value: '064451658' },
-    { label: 'Endereço:', value: 'Av Barueri silva Av Barueri silva' },
-    { label: 'Cidade:', value: 'Barueri' },
-    { label: 'Estado:', value: 'São Paulo' },
+    { label: 'Nome:', value: `Centro de distribuição ${city}` },
+    { label: 'CEP:', value: cep },
+    { label: 'Endereço:', value: address },
+    { label: 'Cidade:', value: city },
+    { label: 'Estado:', value: state },
   ]
 
   const occurrenceData = [
-    { label: 'Título:', value: 'Problema com centro de distribuição' },
-    { label: 'Nome do relator:', value: 'Thalia Jackes' },
-    { label: 'Data da ocorrência:', value: '09/02/2024' },
-    { label: 'Data de encerramento:', value: '09/02/2024' },
+    { label: 'Título:', value: title },
+    { label: 'Nome do relator:', value: name },
+    { label: 'Data da ocorrência:', value: startDate },
+    { label: 'Data de encerramento:', value: endDate || '-' },
     {
       label: 'Upload de Evidências:',
       name: 'file',
-      value: 'São Paulo.JPG, São Paulo.JPG',
+      value: files.map(({ name }) => name).join(', '),
     },
     {
       label: 'Descrição:',
       name: 'description',
-      value:
-        'Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.',
+      value: description,
     },
     {
       label: 'Observação:',
       name: 'comments',
-      value: 'Lorem ipsum dolor sit amet consectetur.',
+      value: comments || ' - ',
     },
   ]
 
@@ -50,9 +66,10 @@ const FourthStep = () => {
   }
 
   const createSolicitation = () => {
-    // TODO: send to service
-    hideStepper()
-    nextStep()
+    issueService.sendIssue(issueData).then(() => {
+      hideStepper()
+      nextStep()
+    })
   }
 
   return (

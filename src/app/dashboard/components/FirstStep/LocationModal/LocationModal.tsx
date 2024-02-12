@@ -47,7 +47,7 @@ const LocationModal = ({ back }: LocationModalProps) => {
             <div>
               <Typography variant="subtitle1">Unidade:</Typography>
               <Typography variant="subtitle2">
-                Centro de distribuição Barueri
+                Centro de distribuição {city}
               </Typography>
             </div>
           </section>

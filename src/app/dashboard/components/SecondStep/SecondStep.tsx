@@ -13,7 +13,9 @@ import { DashboardContext } from '@/presentation/providers/DashboardProvider'
 interface OccurrenceType {
   name: 'title' | 'name' | 'startDate' | 'endDate' | 'description'
   label: string
-  type: 'text' | 'date'
+  type: 'text' | 'date' | 'textarea'
+  multiline?: boolean
+  rows?: number
 }
 
 const SecondStep = () => {
@@ -35,7 +37,13 @@ const SecondStep = () => {
     { name: 'name', label: 'Nome do relator:*', type: 'text' },
     { name: 'startDate', label: 'Data da ocorrência:*', type: 'date' },
     { name: 'endDate', label: 'Data de encerramento:', type: 'date' },
-    { name: 'description', label: 'Descrição:*', type: 'text' },
+    {
+      name: 'description',
+      label: 'Descrição:*',
+      type: 'text',
+      multiline: true,
+      rows: 3,
+    },
   ]
 
   const onSubmit = () => {
@@ -68,6 +76,8 @@ const SecondStep = () => {
               variant="outlined"
               size="medium"
               fullWidth
+              multiline={item.multiline}
+              rows={item.rows}
               error={!!errors[item.name]}
               helperText={errors[item.name]?.message}
               onBlur={() => trigger(item.name)}

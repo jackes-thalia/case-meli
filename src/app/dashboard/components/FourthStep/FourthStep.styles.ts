@@ -9,10 +9,12 @@ export const StyledFourthStep = styled.div`
     display: grid;
     grid-template-columns: 1fr 52px;
     margin-bottom: 16px;
+    cursor: pointer;
   }
 
   .distribution-center {
     margin-top: 20px;
+    cursor: pointer;
   }
 
   .distribution-content {

@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useRef } from 'react'
+import React from 'react'
 import { Button, IconButton, TextField, Typography } from '@mui/material'
 import { StyledThirdStep } from './ThirdStep.styles'
 import LocationInfo from '../LocationInfo/LocationInfo'
@@ -12,7 +12,7 @@ const ThirdStep = () => {
   const [filesToUpload, setFilesToUpload] = React.useState<File[]>([])
   const { addIssueDataFields } = React.useContext(DashboardContext)
   const { nextStep } = React.useContext(StepContext)
-  const commentsRef = useRef(null)
+  const commentsRef = React.useRef<HTMLInputElement>(null)
 
   const validTypes = ['image/png', 'image/jpeg', 'application/pdf']
 
@@ -61,7 +61,7 @@ const ThirdStep = () => {
   const onSubmit = () => {
     addIssueDataFields({
       files: filesToUpload,
-      comments: commentsRef.current ? commentsRef.current : '',
+      comments: commentsRef.current?.value ? commentsRef.current?.value : '',
     })
     nextStep()
   }
@@ -76,8 +76,9 @@ const ThirdStep = () => {
       <div className="upload-content">
         <section>
           <Typography variant="body1">Upload de evidências</Typography>
-          <Typography variant="caption">
-            Anexe arquivos que facilitem a análise da ocorrência
+          <Typography variant="caption" component="p">
+            Anexe arquivos <strong>(.jpg, .png ou .pdf)</strong> que facilitem a
+            análise da ocorrência
           </Typography>
           <Button variant="contained" component="label" sx={{ mt: 4 }}>
             Adicionar arquivo
@@ -89,6 +90,7 @@ const ThirdStep = () => {
               multiple
             />
           </Button>
+
           {filesToUpload.length > 0 && (
             <ul className="files-list">
               {filesToUpload.map((file, key) => (
@@ -116,7 +118,6 @@ const ThirdStep = () => {
         <section>
           <Typography variant="caption">Observações</Typography>
           <TextField
-            ref={commentsRef}
             name="comments"
             placeholder="Digite uma observação"
             type="text"
@@ -124,7 +125,7 @@ const ThirdStep = () => {
             size="medium"
             fullWidth
             multiline
-            inputProps={{ maxLength: 140 }}
+            inputProps={{ maxLength: 140, ref: commentsRef }}
             rows={7}
             sx={{ mt: 3 }}
           />
