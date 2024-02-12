@@ -1,3 +1,4 @@
+import { IssueData } from '@/presentation/providers/DashboardProvider'
 import axios from 'axios'
 
 export interface IGetByCepProps {
@@ -16,7 +17,10 @@ const issueService = {
       .get<IGetByCepProps>(`https://viacep.com.br/ws/${cep}/json/`)
       .then(({ data }) => data)
   },
-  sendIssue: () => {},
+  sendIssue: (issueData: IssueData): Promise<boolean> => {
+    console.log('Send', issueData)
+    return Promise.resolve(true)
+  },
 }
 
 export default issueService
