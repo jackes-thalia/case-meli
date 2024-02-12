@@ -25,11 +25,11 @@ const FourthStep = () => {
   } = issueData
 
   const distributionCenterData = [
-    { label: 'Nome:', value: `Centro de distribuição ${city}` },
-    { label: 'CEP:', value: cep },
-    { label: 'Endereço:', value: address },
-    { label: 'Cidade:', value: city },
-    { label: 'Estado:', value: state },
+    { field: 'name', label: 'Nome:', value: `Centro de distribuição ${city}` },
+    { field: 'cep', label: 'CEP:', value: cep },
+    { field: 'address', label: 'Endereço:', value: address },
+    { field: 'city', label: 'Cidade:', value: city },
+    { field: 'state', label: 'Estado:', value: state },
   ]
 
   const occurrenceData = [
@@ -92,7 +92,12 @@ const FourthStep = () => {
             return (
               <div key={index}>
                 <Typography variant="body1">{item.label}</Typography>
-                <Typography variant="caption">{item.value}</Typography>
+                <Typography
+                  data-testid={`distributionCenterData-${item.field}`}
+                  variant="caption"
+                >
+                  {item.value}
+                </Typography>
               </div>
             )
           })}

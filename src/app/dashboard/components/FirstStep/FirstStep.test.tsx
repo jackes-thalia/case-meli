@@ -31,7 +31,7 @@ jest.mock('@/service/issueService', () => {
   }
 })
 
-describe('Page', () => {
+describe('dashboard/FirstStep', () => {
   it('the mask field must break when 7 digits cep', async () => {
     const { getByTestId, getByText, baseElement, getByRole } =
       render(component())
