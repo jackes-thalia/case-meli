@@ -2,7 +2,7 @@
 import { useRouter } from 'next/navigation'
 import React from 'react'
 
-export const Home = () => {
+export default function Home() {
   const router = useRouter()
 
   React.useEffect(() => {
@@ -11,5 +11,3 @@ export const Home = () => {
 
   return <div></div>
 }
-
-export default Home
