@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import breakpoints from '../constansts/breakpoints'
+import breakpoints from '../constants/breakpoints'
 
 export const StyledMainTemplate = styled.div`
   width: 100%;

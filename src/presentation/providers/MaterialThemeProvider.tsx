@@ -1,10 +1,9 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 
 import { ThemeOptions } from '@mui/material'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import { NextFont } from 'next/dist/compiled/@next/font'
-import breakpoints from '../constansts/breakpoints'
+import breakpoints from '../constants/breakpoints'
 
 const MaterialThemeProvider = ({
   children,

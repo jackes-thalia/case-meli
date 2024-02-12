@@ -1,4 +1,4 @@
-import breakpoints from '@/presentation/constansts/breakpoints'
+import breakpoints from '@/presentation/constants/breakpoints'
 import styled from 'styled-components'
 
 export const StyledThirdStep = styled.form`

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import breakpoints from '../../constansts/breakpoints'
+import breakpoints from '../../constants/breakpoints'
 
 type StyledCardProps = {
   size: 'small' | 'large'
